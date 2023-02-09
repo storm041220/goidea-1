@@ -8,7 +8,7 @@
     "server": "nodemon server/index.js",
     "client": "cd client/ && npm start",
     "project": "npm run server & npm run client",
-    "install": "cd client && npm install && cd .. && npm install"
+    "install": "npm install && cd client && npm install"
   },
   "author": "",
   "license": "ISC"
