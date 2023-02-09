@@ -10,9 +10,9 @@
 <body>
   <form class="box" action="index.html" method="post">
     <h1>Login</h1>
-    <input type="text" name="" placeholder="Username">
-    <input type="password" name="" placeholder="Password">
-    <a href="http://www.cakecounter.com/" target="_blank" type="submit">Login</a>
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <a href="javascript:submitlogin()" type="submit">Login</a>
   </form>
   
   <div class="lines">
@@ -36,5 +36,34 @@
     <div class="line"></div>
     <div class="line"></div>
   </div>
+  <script>
+  function submitlogin() {
+    var username = document.getElementsByName("username")[0].value;
+    var password = document.getElementsByName("password")[0].value;
+    if(username == "" || password == "") {
+      alert("Please fill in all fields");
+      return;
+    }
+    var data = {
+      username: username,
+      password: password
+    }
+    fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status == 200) {
+        window.location.href = "https://Google.com";
+      } else {
+        alert(data.message);
+      }
+    })
+  }
+  </script>
 </body>
 </html>
