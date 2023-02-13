@@ -192,11 +192,11 @@
                     <h2>Create a new User</h2>
                     <hr>
                     <label for="name"><b>Name</b></label>
-                    <input type="text" placeholder="User Name" name="name" required>
+                    <input type="text" placeholder="User Name" id="name" name="name" required>
                     <label for="email"><b>Email</b></label>
-                    <input type="email" placeholder="abc@email.com" name="email" required>
+                    <input type="email" placeholder="abc@email.com" name="email" id="email" required>
                     <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="User Password" name="password" required>
+                    <input type="password" placeholder="User Password" name="password" id="password" required>
                     <label for="DateOfBirth"><b>Date of Birth</b></label>
                     <input type="date" id="DateOfBirth" name="DateOfBirth" required>
                     <div style="width:200">
@@ -218,9 +218,7 @@
                             <option value="4">Quality Assurance Manager</option>
                         </select>
                     </div>
-                    <label for="googleid"><b>Google ID</b></label>
-                    <input type="email" placeholder="abc@gmail.com" name="googleid" required>
-                    <button type="submit" class="createBtn">Create</button>
+                    <a href="javascript:submit()" class="createBtn" type="submit">Create</a>
                     <hr>
                 </div>
             </form>
@@ -292,6 +290,47 @@
                 localStorage.setItem("dark-mode", "true");
             }
         });
+    </script>
+    <script>
+        function submit() {
+            var username = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var dateofbirth = document.getElementById("DateOfBirth").value;
+            var department = document.getElementById("department").value;
+            var roles = document.getElementById("roles").value;
+            
+            if (username == "" || email == "" || password == "" || dateofbirth == "" ) {
+                alert("Please fill all the fields");
+                return;
+            }
+            var data = {
+                name: username,
+                email: email,
+                password: password,
+                DateOfBirth: dateofbirth,
+                department: department,
+                roles: roles,
+                
+            };
+            fetch('/admin/users', {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                if(data.status == 200) {
+                    alert("User created successfully");
+                }
+                else {
+                    alert("User creation failed");
+                }
+            });
+
+        }
     </script>
 </body>
 
