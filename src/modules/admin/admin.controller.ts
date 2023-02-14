@@ -21,8 +21,13 @@ export class AdminController {
     return res.render('roles/admin/CreateUsers_index', { layout: 'main' });
   }
 
-  @Get('Organization')
+  @Get('organization')
   Organization(@Res() res: Response) {
     return res.render('organizations/dashboard', { layout: 'auth' });
+  }
+
+  @Get('createOrganization')
+  createOrganization(@Res() res: Response) {
+    return res.render('organizations/organization_create', { layout: 'main' });
   }
 }

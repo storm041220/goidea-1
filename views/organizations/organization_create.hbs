@@ -1,37 +1,21 @@
+// this is just a placeholder for the organization_create.hbs file
+
 <form id="create">
     <div class="container">
-        <h2>Create a new User</h2>
+        <h2>Create a new Organization</h2>
         <hr>
         <label for="name"><b>Name</b></label>
-        <input type="text" placeholder="User Name" id="name" name="name" required>
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="abc@email.com" name="email" id="email" required>
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="User Password" name="password" id="password" required>
-        <label for="DateOfBirth"><b>Date of Birth</b></label>
-        <input type="date" id="DateOfBirth" name="DateOfBirth" required>
-        <div style="width:200">
-            <label for="department"><b>Department</b></label>
-            <br>
-            <select name="department" class="selectedItem" id="department" required>
-                <option value="1">IT</option>
-                <option value="2">Business</option>
-                <option value="3">Graphic Design</option>
-            </select>
-        </div>
-        <div style="width:200">
-            <label for="roles"><b>Roles</b></label>
-            <br>
-            <select name="roles" class="selectedItem" id="roles" required>
-                <option value="1">Staff</option>
-                <option value="2">Quality Assurance Coordinator</option>
-                <option value="3">Quality Assurance Manager</option>
-            </select>
-        </div>
-        <button class="createBtn" type="submit" id="register">Create</button>
+        <input type="text" placeholder="Organization Name" id="name" name="name" required>
+        <label for="location"><b>Location</b></label>
+        <input type="text" placeholder="Organization Location" id="location" name="location" required>
+        <label for="description"><b>Description</b></label>
+        <input type="text" placeholder="Organization Description" id="description" name="description" required>
+        <label for="CreatedDate"><b>Created Date</b></label>
+        <input type="date" id="CreatedDate" name="CreatedDate" required>
         <hr>
-    </div>
+        <button class="createBtn" type="submit" id="register">Create</button>
 </form>
+
 <script>
     const html = document.documentElement;
     const body = document.body;
@@ -99,29 +83,20 @@
         }
     });
 </script>
+
 <script>
     function submit() {
-        var username = document.getElementById("name").value;
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        var dateofbirth = document.getElementById("DateOfBirth").value;
-        var department = document.getElementById("department").value;
-        var roles = document.getElementById("roles").value;
-
-        if (username == "" || email == "" || password == "" || dateofbirth == "") {
-            alert("Please fill all the fields");
-            return;
-        }
+        var name = document.getElementById("name").value;
+        var location = document.getElementById("location").value;
+        var description = document.getElementById("description").value;
+        var CreatedDate = document.getElementById("CreatedDate").value;
         var data = {
-            name: username,
-            email: email,
-            password: password,
-            DateOfBirth: dateofbirth,
-            department: department,
-            roles: roles,
-
+            name: name,
+            location: location,
+            description: description,
+            CreatedDate: CreatedDate
         };
-        fetch('/admin/users', {
+        fetch("http://localhost:3000/organizations", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -131,23 +106,23 @@
             return response.json();
         }).then(function (data) {
             if (data.status == 200) {
-                alert("User created successfully");
+                alert("Organization Created Successfully");
             }
             else {
-                alert("User creation failed");
+                alert("Error Creating Organization");
             }
-        });
+        })
         return false;
+
     }
-    var form = document.getElementById("register")
-    form.addEventListener("click", (e) => {
-        var username = document.getElementById("name");
-        var email = document.getElementById("email");
-        var password = document.getElementById("password");
-        var dateofbirth = document.getElementById("DateOfBirth");
-        var department = document.getElementById("department");
-        var roles = document.getElementById("roles");
-        var fields = [username, email, password, dateofbirth, department, roles]
+    var form = document.getElementById("create");
+    form.addEventListener("click", (e)=> {
+        var name = document.getElementById("name").value;
+        var location = document.getElementById("location").value;
+        var description = document.getElementById("description").value;
+        var CreatedDate = document.getElementById("CreatedDate").value;
+
+        var fields = [name, location, description, CreatedDate];
         var validity = true;
 
         for (var e of fields) {
@@ -159,5 +134,5 @@
         if (validity == true) {
             submit();
         }
-    });
+    })
 </script>
