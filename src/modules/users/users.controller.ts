@@ -1,13 +1,13 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Render, Res } from '@nestjs/common';
 import { UserService } from './user.service';
+import { Response } from 'express';
 
 @Controller()
 export class UserController {
   constructor(private readonly appService: UserService) {}
 
   @Get()
-  @Render('user_index')
-  root() {
-    return { };
+  root(@Res() res: Response) {
+    return res.render('user_index', { layout: 'auth' });
   }
 }
