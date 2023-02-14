@@ -1,21 +1,19 @@
-// this is just a placeholder for the organization_create.hbs file
+<h4>this is a placeholer</h4>
 
 <form id="create">
     <div class="container">
-        <h2>Create a new Organization</h2>
+        <h2>Create a new Date</h2>
         <hr>
-        <label for="name"><b>Name</b></label>
-        <input type="text" placeholder="Organization Name" id="name" name="name" required>
-        <label for="location"><b>Location</b></label>
-        <input type="text" placeholder="Organization Location" id="location" name="location" required>
+        <label for="firstDate"><b>Opening Date</b></label>
+        <input type="date" id="firstDate" name="firstDate" required>
+        <label for="endDate"><b>Closing Date</b></label>
+        <input type="date" id="endDate" name="endDate" required>
         <label for="description"><b>Description</b></label>
-        <input type="text" placeholder="Organization Description" id="description" name="description" required>
-        <label for="CreatedDate"><b>Created Date</b></label>
-        <input type="date" id="CreatedDate" name="CreatedDate" required>
+        <input type="text" placeholder="Description" id="description" name="description" required>
         <hr>
         <button class="createBtn" type="submit" id="register">Create</button>
+    </div>
 </form>
-
 <script>
     const html = document.documentElement;
     const body = document.body;
@@ -59,46 +57,33 @@
             ) {
                 const tooltip = this.querySelector("span").textContent;
                 this.setAttribute("title", tooltip);
-            } else {
-                this.removeAttribute("title");
             }
         });
     }
 
     /*TOGGLE LIGHT/DARK MODE*/
-    if (localStorage.getItem("dark-mode") === "false") {
-        html.classList.add(lightModeClass);
-        switchInput.checked = false;
-        switchLabelText.textContent = "Light";
-    }
-
-    switchInput.addEventListener("input", function () {
-        html.classList.toggle(lightModeClass);
-        if (html.classList.contains(lightModeClass)) {
-            switchLabelText.textContent = "Light";
-            localStorage.setItem("dark-mode", "false");
+    switchInput.addEventListener("change", function () {
+        if (this.checked) {
+            html.classList.add(lightModeClass);
+            switchLabelText.textContent = "Light Mode";
         } else {
-            switchLabelText.textContent = "Dark";
-            localStorage.setItem("dark-mode", "true");
+            html.classList.remove(lightModeClass);
+            switchLabelText.textContent = "Dark Mode";
         }
     });
 </script>
-
 <script>
     function submit() {
-        var name = document.getElementById("name").value;
-        var location = document.getElementById("location").value;
+        var firstDate = document.getElementById("firstDate").value;
+        var endDate = document.getElementById("endDate").value;
         var description = document.getElementById("description").value;
-        var CreatedDate = document.getElementById("CreatedDate").value;
 
         var data = {
-            name: name,
-            location: location,
-            description: description,
-            CreatedDate: CreatedDate
+            firstDate: firstDate,
+            endDate: endDate,
+            description: description
         };
-
-        fetch('/admin/organization', {
+        fetch("/admin/date", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -115,16 +100,14 @@
             }
         });
         return false;
-
     }
     var form = document.getElementById("register");
     form.addEventListener("click", (e) => {
-        var name = document.getElementById("name");
-        var location = document.getElementById("location");
+        var firstDate = document.getElementById("firstDate");
+        var endDate = document.getElementById("endDate");
         var description = document.getElementById("description");
-        var CreatedDate = document.getElementById("CreatedDate");
 
-        var fields = [name, location, description, CreatedDate];
+        var fields = [firstDate, endDate, description];
         var validity = true;
 
         for (var e of fields) {
@@ -136,5 +119,6 @@
         if (validity == true) {
             submit();
         }
-    })
+
+    });
 </script>

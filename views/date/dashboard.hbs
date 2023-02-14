@@ -1,21 +1,35 @@
-// this is just a placeholder for the organization_create.hbs file
+<section class="page-content">
+    <section class="search-and-user">
+        <form>
+            <input type="search" placeholder="Search Users..." style="color: black;">
+            <button type="submit" aria-label="submit form">
+                <svg aria-hidden="true">
+                    <use xlink:href="#search"></use>
+                </svg>
+            </button>
+        </form>
+        <div class="admin-profile">
+            <span class="greeting">Hello admin</span>
+            <div class="notifications">
+                <span class="badge">1</span>
+                <svg>
+                    <use xlink:href="#users"></use>
+                </svg>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h4>Feedbacks Period Page</h4>
+            <form class="btnPos">
+                <input type="button" class="darkBlueBtn" value="Create Date"
+                    onclick="location.href='createDate'">
+            </form>
+            <br>
+            <table>
 
-<form id="create">
-    <div class="container">
-        <h2>Create a new Organization</h2>
-        <hr>
-        <label for="name"><b>Name</b></label>
-        <input type="text" placeholder="Organization Name" id="name" name="name" required>
-        <label for="location"><b>Location</b></label>
-        <input type="text" placeholder="Organization Location" id="location" name="location" required>
-        <label for="description"><b>Description</b></label>
-        <input type="text" placeholder="Organization Description" id="description" name="description" required>
-        <label for="CreatedDate"><b>Created Date</b></label>
-        <input type="date" id="CreatedDate" name="CreatedDate" required>
-        <hr>
-        <button class="createBtn" type="submit" id="register">Create</button>
-</form>
-
+            </table>
+    </section>
+</section>
 <script>
     const html = document.documentElement;
     const body = document.body;
@@ -82,59 +96,4 @@
             localStorage.setItem("dark-mode", "true");
         }
     });
-</script>
-
-<script>
-    function submit() {
-        var name = document.getElementById("name").value;
-        var location = document.getElementById("location").value;
-        var description = document.getElementById("description").value;
-        var CreatedDate = document.getElementById("CreatedDate").value;
-
-        var data = {
-            name: name,
-            location: location,
-            description: description,
-            CreatedDate: CreatedDate
-        };
-
-        fetch('/admin/organization', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            if (data.status == 200) {
-                alert("Organization Created Successfully");
-            }
-            else {
-                alert("Error Creating Organization");
-            }
-        });
-        return false;
-
-    }
-    var form = document.getElementById("register");
-    form.addEventListener("click", (e) => {
-        var name = document.getElementById("name");
-        var location = document.getElementById("location");
-        var description = document.getElementById("description");
-        var CreatedDate = document.getElementById("CreatedDate");
-
-        var fields = [name, location, description, CreatedDate];
-        var validity = true;
-
-        for (var e of fields) {
-            if (e.checkValidity() == false) {
-                validity = false;
-                e.reportValidity();
-            }
-        }
-        if (validity == true) {
-            submit();
-        }
-    })
 </script>

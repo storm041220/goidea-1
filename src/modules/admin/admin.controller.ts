@@ -30,4 +30,14 @@ export class AdminController {
   createOrganization(@Res() res: Response) {
     return res.render('organizations/organization_create', { layout: 'main' });
   }
+
+  @Get('date')
+  Date(@Res() res: Response) {
+    return res.render('date/dashboard', { layout: 'auth' });
+  }
+
+  @Get('createDate')
+  createDate(@Res() res: Response) {
+    return res.render('date/dateCreate', { layout: 'main' });
+  }
 }
