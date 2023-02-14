@@ -1,13 +1,13 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Render, Res } from '@nestjs/common';
 import { CreateUsersService } from './CreateUsers.service';
+import { Response } from 'express';
 
 @Controller()
 export class CreateUsersController {
     constructor(private readonly appService: CreateUsersService) {}
     
     @Get()
-    @Render('CreateUsers_index')
-    root() {
-        return { };
+    root(@Res() res: Response) { 
+        return res.render('CreateUsers_index', { layout: 'main' });
     }
-    }
+}
