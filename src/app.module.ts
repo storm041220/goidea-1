@@ -8,12 +8,6 @@ import { AdminModule } from './modules/admin/admin.module';
 @Module({
   imports: [
     AdminModule,
-    RouterModule.register([
-      {
-        path: 'admin',
-        module: AdminModule,
-      },
-    ])
   ],
   controllers: [AppController],
   providers: [AppService],
