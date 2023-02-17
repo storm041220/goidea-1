@@ -10,8 +10,6 @@
         <input type="text" placeholder="Organization Location" id="location" name="location" required>
         <label for="description"><b>Description</b></label>
         <input type="text" placeholder="Organization Description" id="description" name="description" required>
-        <label for="CreatedDate"><b>Created Date</b></label>
-        <input type="date" id="CreatedDate" name="CreatedDate" required>
         <hr>
         <button class="createBtn" type="submit" id="register">Create</button>
 </form>
@@ -83,13 +81,12 @@
         }
     });
 </script>
-
 <script>
     function submit() {
         var name = document.getElementById("name").value;
         var location = document.getElementById("location").value;
         var description = document.getElementById("description").value;
-        var CreatedDate = document.getElementById("CreatedDate").value;
+        
 
         var data = {
             name: name,
@@ -122,7 +119,6 @@
         var name = document.getElementById("name");
         var location = document.getElementById("location");
         var description = document.getElementById("description");
-        var CreatedDate = document.getElementById("CreatedDate");
 
         var fields = [name, location, description, CreatedDate];
         var validity = true;

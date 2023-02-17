@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/assets/css/users.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -171,24 +173,32 @@
             </ul>
         </nav>
     </header>
-        <section class="page-content">
-            <section class="search-and-user">
-                <form>
-        
-                </form>
-                <div class="admin-profile">
-                    <span class="greeting">Hello admin</span>
-                    <div class="notifications">
-                        <span class="badge">1</span>
-                        <svg>
-                            <use xlink:href="#users"></use>
-                        </svg>
+    <section class="page-content">
+        <section class="search-and-user">
+            <form>
+
+            </form>
+            <div class="admin-profile">
+                <span class="dropdown">
+                    <button class="dropbtn fa fa-bars"></button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
                     </div>
+                </span>
+                <span class="greeting">Hello admin</span>
+                <div class="notifications">
+                    <span class="badge">1</span>
+                    <svg>
+                        <use xlink:href="#users"></use>
+                    </svg>
                 </div>
-            </section>
-            <section>{{{body}}}</section>
+            </div>
+            
         </section>
-    </body>
-    
-    </html>
-    
+        <section>{{{body}}}</section>
+    </section>
+</body>
+
+</html>

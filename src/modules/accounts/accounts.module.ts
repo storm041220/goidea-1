@@ -4,6 +4,7 @@ import { DatabaseModule } from "@src/common/database_module/database.module";
 import { RouterModule } from "@nestjs/core";
 import { AccountsController } from "./accounts.controller";
 
+
 @Global()
 @Module({
     controllers: [AccountsController],
