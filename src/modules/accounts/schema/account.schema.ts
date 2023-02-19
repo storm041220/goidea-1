@@ -3,6 +3,7 @@ import mongoose, { Document } from 'mongoose';
 import { hashSync } from "bcryptjs";
 import * as paginate from "mongoose-paginate-v2";
 import { BCRYPT_SALT } from "@configs/env";
+import Role, { RoleNames } from '@common/enums/role.enum';
 
 export type AccountDocument = Account & Document;
 @Schema({ timestamps: true })
@@ -43,9 +44,9 @@ export class Account {
 
 
     @Prop({
-        enum: ['admin', 'user', 'staff', 'qac', 'qam'],
-        default: 'user',
-        type: { type: mongoose.Schema.Types.String },
+        enum: RoleNames,
+        default: [Role.User],
+        type: { type: mongoose.Schema.Types.String},
     })
     roles: string;
 

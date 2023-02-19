@@ -51,7 +51,6 @@ interface AuthData {
 }
 
 interface TokenPayload {
-    teamId?: string,
     accountId: string
 }
 

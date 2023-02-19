@@ -12,7 +12,7 @@ import { AccountsController } from "./accounts.controller";
     imports: [DatabaseModule,
         RouterModule.register([
         {
-            path: 'api/accounts',
+            path: 'accounts',
             module: AccountsModule,
         },
     ])]

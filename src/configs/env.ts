@@ -23,3 +23,10 @@ export const MONGO_URI = process.env.MONGO_URI;
 
 // bcrypt
 export const BCRYPT_SALT: number = +process.env.BCRYPT_SALT || 10;
+
+// jsonwebtoken
+export const ISSUER: string = process.env.ISSUER || "tqb";
+export const ACCESS_TOKEN_SECRET: string = process.env.ACCESS_TOKEN_SECRET || "access-token-key";
+export const REFRESH_TOKEN_SECRET: string = process.env.REFRESH_TOKEN_SECRET || "refresh-token-key";
+export const EMAIL_TOKEN_SECRET: string = process.env.EMAIL_TOKEN_SECRET || "email-token-key";
+export const RESET_PASS_TOKEN_SECRET: string = process.env.RESETPASS_TOKEN_SECRET || "resetpass-token-key";

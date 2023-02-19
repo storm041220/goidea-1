@@ -2,6 +2,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { Global, Module } from "@nestjs/common";
 import { AccountSchema } from "@src/modules/accounts/schema/account.schema";
 import { DefaultAccount } from "../util/default-account";
+import { TokenSchema } from "@src/modules/token/schema/token.schema";
 
 @Global()
 @Module({
@@ -10,6 +11,9 @@ import { DefaultAccount } from "../util/default-account";
             {
                 name: "Account", schema: AccountSchema
             },
+            {
+                name: "Token", schema: TokenSchema
+            }
         ]),
         MongooseModule.forFeatureAsync([
             {
@@ -28,7 +32,9 @@ import { DefaultAccount } from "../util/default-account";
         MongooseModule.forFeature([
             {
                 name: "Account", schema: AccountSchema
-            },
+            }, {
+                name: "Token", schema: TokenSchema
+            }
         ])
     ]
 })

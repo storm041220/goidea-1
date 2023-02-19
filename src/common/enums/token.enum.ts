@@ -1,11 +1,10 @@
 enum TokenEnum {
     Refresh = 'refresh',
     Access = 'access',
-    EmailVerify = 'emailVerify',
     ChangePassword = 'changePassword',
 }
 
-export const TokenTypes = ["refresh", "access", "emailVerify", "changePassword", "teamInvitation"];
+export const TokenTypes = ["refresh", "access", "changePassword"];
 
 export type TokenType = typeof TokenTypes[number];
 
