@@ -113,6 +113,7 @@
     </svg>
     <header class="page-header">
         <nav>
+            </a>
             <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
                 <svg width="20" height="20" aria-hidden="true">
                     <use xlink:href="#down"></use>
@@ -172,7 +173,32 @@
             </ul>
         </nav>
     </header>
-    {{{body}}}
+    <section class="page-content">
+        <section class="search-and-user">
+            <form>
+
+            </form>
+            <div class="admin-profile">
+                <span class="dropdown">
+                    <button class="dropbtn fa fa-bars"></button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </span>
+                <span class="greeting">Hello admin</span>
+                <div class="notifications">
+                    <span class="badge">1</span>
+                    <svg>
+                        <use xlink:href="#users"></use>
+                    </svg>
+                </div>
+            </div>
+            
+        </section>
+        <section>{{{body}}}</section>
+    </section>
 </body>
 
 </html>

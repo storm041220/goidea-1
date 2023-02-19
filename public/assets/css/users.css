@@ -332,12 +332,18 @@ body {
 .createBtn {
   background-color: #131c65;
   color: white;
-  padding: 16px 561px;
+  padding: 15px;
   margin: 8px 0;
   border: none;
-  cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  display: inline-block;
+}
+
+.responsive {
+ display: flex;
+ max-width: 100px;
+ position: relative;
 }
 
 .selectedItem {
@@ -474,6 +480,50 @@ hr {
   }
 }
 
+.dropbtn {
+  background-color: #d2ded9;
+  color: rgb(32, 29, 29);
+  padding: 5px;
+  top: 10px;
+  font-size: 16px;
+  border: none;
+}
+
+.actionBtn {
+  background-color: #d2ded9;
+  color: rgb(32, 29, 29);
+  padding: 5px;
+  border-radius: 8px;}
+
+.actionBtn:hover {background-color: #71719d;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #b1b5b1;}
+
 /* BODY CLASSES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .mob-menu-opened .toggle-mob-menu svg {
@@ -513,6 +563,29 @@ hr {
     left: 40px;
     width: calc(100% - 40px);
   }
+}
+
+#information {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+#information td, #information th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#information tr:nth-child(even){background-color: #f2f2f2;}
+
+#information tr:hover {background-color: #ddd;}
+
+#information th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #080748;
+  color: white;
 }
 
 /* SWITCH STYLES

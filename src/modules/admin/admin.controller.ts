@@ -16,7 +16,7 @@ export class AdminController {
     return res.render('roles/admin/user_index', { layout: 'auth' });
   }
 
-  @Get('createUsers')
+  @Get('users/create')
   createUsers(@Res() res: Response) {
     return res.render('roles/admin/CreateUsers_index', { layout: 'main' });
   }
@@ -26,18 +26,8 @@ export class AdminController {
     return res.render('organizations/dashboard', { layout: 'auth' });
   }
 
-  @Get('createOrganization')
+  @Get('organization/create')
   createOrganization(@Res() res: Response) {
     return res.render('organizations/organization_create', { layout: 'main' });
-  }
-
-  @Get('date')
-  Date(@Res() res: Response) {
-    return res.render('date/dashboard', { layout: 'auth' });
-  }
-
-  @Get('createDate')
-  createDate(@Res() res: Response) {
-    return res.render('date/dateCreate', { layout: 'main' });
   }
 }
