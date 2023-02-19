@@ -59,7 +59,7 @@ export class AuthController {
     async register(@Body() registerAccountDto: RegisterAccountDto) {
         await this.authService.register(registerAccountDto);
         return {
-            message: "Register account successfully, please verify your email before signing in",
+            message: "Register account successfully, you can login now.",
             success: true
         };
     }

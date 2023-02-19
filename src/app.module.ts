@@ -10,6 +10,9 @@ import { MONGO_URI } from './configs/env';
 import { TokensModule } from './modules/token/token.modulet';
 import { ConfigModule } from '@nestjs/config';
 import configs from './configs';
+import { AuthModule } from './modules/auth/auth.module';
+import { AccountsService } from './modules/accounts/accounts.service';
+import { AccountsModule } from './modules/accounts/accounts.module';
 
 console.log(`MONGO_URI: ${MONGO_URI}`);
 
@@ -17,6 +20,8 @@ console.log(`MONGO_URI: ${MONGO_URI}`);
   imports: [
     MongooseModule.forRoot(MONGO_URI),
     DatabaseModule,
+    AuthModule,
+    AccountsModule,
     TokensModule,
     AdminModule,
     IdeaModule,
