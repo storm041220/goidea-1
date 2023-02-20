@@ -46,7 +46,7 @@ export class Account {
     @Prop({
         enum: RoleNames,
         default: [Role.User],
-        type: { type: mongoose.Schema.Types.String},
+        type: [{ type: mongoose.Schema.Types.String}],
     })
     roles: string;
 

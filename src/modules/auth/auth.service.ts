@@ -8,9 +8,11 @@ import TokenEnum, { TokenType } from "@src/common/enums/token.enum";
 import { HttpService } from "@nestjs/axios";
 import { RegisterAccountDto } from "@src/common/util/register-account-dto";
 import { TokensService } from '../token/token.service';
-import moment from "moment";
+import * as moment from "moment";
 import { generateRandomUsername } from "@src/common/util/random";
 import { AccountDocument } from "../accounts/schema/account.schema";
+
+
 
 @Injectable()
 export class AuthService {
@@ -32,13 +34,13 @@ export class AuthService {
     }
 
     async authenticate(loginField: string, password: string) {
-        let account = await this.accountService.findOne({ $or: [{ email: loginField }, { username: loginField }] });
+        let account = await this.accountService
+            .findOne({ $or: [{ email: loginField }, { username: loginField }] }, { select: 'username email password'})
 
         // if (!account.isActivated) {
         //   await this.generateVerifyTokenAndSendEmail(Token.EmailVerify, account);
         //   throw new HttpException("verifyAccount", HttpStatus.INTERNAL_SERVER_ERROR);
         // }
-
         const check = await this.comparePassword(password, account.password);
         if (!account || !check) {
             throw new HttpException("Failed to login", HttpStatus.UNAUTHORIZED);
@@ -115,7 +117,7 @@ export class AuthService {
     }
 
     async verifyTokenFromRequest(token: string, keyName: "jwt.accessTokenPrivateKey" | "jwt.refreshTokenPrivateKey"): Promise<AccountDocument> {
-        const payload = this.verifyToken(token, "jwt.accessTokenPrivateKey");
+        const payload = this.verifyToken(token, keyName || "jwt.accessTokenPrivateKey");
 
         const account = await this.accountService.findOne({ _id: payload.accountId }, { nullable: true });
 

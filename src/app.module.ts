@@ -14,10 +14,13 @@ import { AuthModule } from './modules/auth/auth.module';
 import { AccountsService } from './modules/accounts/accounts.service';
 import { AccountsModule } from './modules/accounts/accounts.module';
 
-console.log(`MONGO_URI: ${MONGO_URI}`);
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configs]
+    }),
     MongooseModule.forRoot(MONGO_URI),
     DatabaseModule,
     AuthModule,
@@ -25,10 +28,7 @@ console.log(`MONGO_URI: ${MONGO_URI}`);
     TokensModule,
     AdminModule,
     IdeaModule,
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [configs]
-    }),
+
   ],
   controllers: [AppController],
   providers: [AppService],

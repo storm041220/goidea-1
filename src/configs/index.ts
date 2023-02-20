@@ -11,7 +11,6 @@ export default () => ({
         expiresTime: {
             access: process.env.ACCESS_TOKEN_EXPIRES_TIME || "30m",
             refresh: process.env.REFRESH_TOKEN_EXPIRES_TIME || "7d",
-            emailVerify: process.env.EMAIL_VERIFY_TOKEN_EXPIRES_TIME || "1d",
             changePassword: process.env.CHANGE_PASSWORD_TOKEN_EXPIRES_TIME || "10m"
         }
     },

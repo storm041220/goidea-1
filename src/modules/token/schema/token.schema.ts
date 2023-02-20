@@ -23,7 +23,7 @@ export class Token {
     account: Account;
 
     @Prop({
-        enum: ["access", "refresh", "emailVerify", "changePassword"]
+        enum: ["access", "refresh", "changePassword"]
     })
     type: string;
 

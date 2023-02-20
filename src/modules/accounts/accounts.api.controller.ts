@@ -14,14 +14,14 @@ import { Express } from "express";
 import { UpdateSelfAccountDto, UpdateAccountDto } from "./dto/update-self-account.dto";
 
 @Controller('api')
-class AccountsAPIController {
+export class AccountsAPIController {
     constructor(
         private readonly accountsService: AccountsService,
         private readonly authService: AuthService,
     
     ) { }
     
-    @Get()
+    @Get('all')
     @UseGuards(RoleGuard(Role.Admin))
     getAccounts(
         @Query() filter: FindAccountFilterDto,
