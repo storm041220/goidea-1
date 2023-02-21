@@ -1,4 +1,4 @@
-import { Post, Res, Body, HttpStatus, HttpException, Req, UseGuards, Controller } from '@nestjs/common';
+import { Post, Res, Body, HttpStatus, HttpException, Req, UseGuards, Controller, Delete } from '@nestjs/common';
 import { ConfigService } from "@nestjs/config";
 import { AccountDecorator } from "@src/common/decorators/account.decorator";
 import TokenEnum from "@src/common/enums/token.enum";
@@ -12,6 +12,8 @@ import { LoginDto } from "./dto/login.dto";
 import { LogoutDto } from "./dto/logout.dto";
 import { RegisterAccountDto } from "./dto/register.dto";
 import { ForgetPasswordDto } from "./dto/forget-password.dto";
+import RoleGuard from '../../../dist/common/guards/role.guard';
+import Role from '@src/common/enums/role.enum';
 
 
 @Controller('api')
@@ -149,4 +151,13 @@ export class AuthController {
         };
     }
 
+    @Delete("admin_remove")
+    @UseGuards(RoleGuard(Role.Admin))
+    async removeAccount(@Body() { accountId }: { accountId: string }) {
+        await this.accountService.delete({ _id: accountId });
+        return {
+            message: "Remove account successfully",
+            success: true
+        };
+    }
 }
