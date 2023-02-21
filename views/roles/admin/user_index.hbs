@@ -41,10 +41,10 @@
                         <td>lorem3</td>
                         <td>lorem4</td>
                         <td>
-                            <form>
-                                <button class="actionBtn fa fa-pencil-square-o">Edit</button>
-                                <button class="actionBtn fa fa-trash-o">Remove</button>
-                            </form>
+
+                            <button class="actionBtn fa fa-pencil-square-o">Edit</button>
+                            <button class="actionBtn fa fa-trash-o" onclick="deleteAccount()">Remove</button>
+
                         </td>
                     </tr>
                 </table>
@@ -119,4 +119,34 @@
         }
     });
 </script>
-<script></script>
+<script>
+    async function deleteAccount() {
+        var x = confirm("Are you sure you want to delete this account?");
+        if (x) {
+            try {
+                var res = await fetch('/auth/api/admin_remove', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    },
+                    body: JSON.stringify({
+                        id: id
+                    })
+                });
+                if (res.success) {
+                    alert(res.message);
+                    window.location.href = "/admin/users";
+                }
+                else {
+                    alert(res.message);
+                }
+            }
+            catch (err) {
+                alert(err);
+            }
+        }
+        else
+            return false;
+    }
+</script>

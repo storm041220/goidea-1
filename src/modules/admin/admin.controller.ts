@@ -30,4 +30,8 @@ export class AdminController {
   createOrganization(@Res() res: Response) {
     return res.render('organizations/organization_create', { layout: 'main' });
   }
+  @Get('organization/id/departments')
+  departments(@Res() res: Response) {
+    return res.render('organizations/departments_create', { layout: 'main' });
+  }
 }
