@@ -12,8 +12,8 @@ import { LoginDto } from "./dto/login.dto";
 import { LogoutDto } from "./dto/logout.dto";
 import { RegisterAccountDto } from "./dto/register.dto";
 import { ForgetPasswordDto } from "./dto/forget-password.dto";
-import RoleGuard from '../../../dist/common/guards/role.guard';
 import Role from '@src/common/enums/role.enum';
+import RoleGuard from '@src/common/guards/role.guard';
 
 
 @Controller('api')
