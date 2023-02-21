@@ -315,7 +315,6 @@ body {
   transform: translate(-50%, -50%);
 }
 
-
 .darkBlueBtn {
   background-color: #131c65;
   border: none;
@@ -329,6 +328,10 @@ body {
   cursor: pointer;
 }
 
+.darkBlueBtn:hover {
+  background-color: #7889a4;
+}
+
 .createBtn {
   background-color: #131c65;
   color: white;
@@ -340,10 +343,14 @@ body {
   display: inline-block;
 }
 
+.createBtn:hover {
+  background-color: #7889a4;
+}
+
 .responsive {
- display: flex;
- max-width: 100px;
- position: relative;
+  display: flex;
+  max-width: 100px;
+  position: relative;
 }
 
 .selectedItem {
@@ -354,7 +361,6 @@ body {
   border: none;
   background: #f1f1f1;
 }
-
 
 .table_border_format {
   border: 1px solid #ffffff;
@@ -368,7 +374,10 @@ body {
   background-color: white;
 }
 
-input[type=text], input[type=password], input[type=date], input[type=email] {
+input[type='text'],
+input[type='password'],
+input[type='date'],
+input[type='email'] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -377,7 +386,10 @@ input[type=text], input[type=password], input[type=date], input[type=email] {
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=email]:focus {
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='date']:focus,
+input[type='email']:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -493,9 +505,12 @@ hr {
   background-color: #d2ded9;
   color: rgb(32, 29, 29);
   padding: 5px;
-  border-radius: 8px;}
+  border-radius: 8px;
+}
 
-.actionBtn:hover {background-color: #71719d;}
+.actionBtn:hover {
+  background-color: #71719d;
+}
 
 .dropdown {
   position: relative;
@@ -507,7 +522,7 @@ hr {
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -518,11 +533,17 @@ hr {
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-.dropdown:hover .dropbtn {background-color: #b1b5b1;}
+.dropdown:hover .dropbtn {
+  background-color: #b1b5b1;
+}
 
 /* BODY CLASSES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -571,14 +592,19 @@ hr {
   width: 80%;
 }
 
-#information td, #information th {
+#information td,
+#information th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#information tr:nth-child(even){background-color: #f2f2f2;}
+#information tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-#information tr:hover {background-color: #ddd;}
+#information tr:hover {
+  background-color: #ddd;
+}
 
 #information th {
   padding-top: 12px;
