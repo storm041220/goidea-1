@@ -59,11 +59,16 @@ export class AuthController {
 
     @Post("register")
     async register(@Body() registerAccountDto: RegisterAccountDto) {
-        await this.authService.register(registerAccountDto);
-        return {
-            message: "Register account successfully, you can login now.",
-            success: true
-        };
+        try {
+            await this.authService.register(registerAccountDto);
+            return {
+                message: "Register account successfully, you can login now.",
+                success: true
+            };
+        }
+        catch (e) {
+            throw new HttpException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     // @Post("forget_password")
