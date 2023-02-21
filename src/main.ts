@@ -13,7 +13,12 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
-  app.engine('hbs', hbs.engine({ extname: 'hbs', defaultLayout: 'main.hbs' }));
+  app.engine('hbs', hbs.engine({
+    extname: 'hbs',
+    partialsDir: join(__dirname, '..', 'views/partials'),
+    layoutsDir: join(__dirname, '..', 'views/layouts'),
+    defaultLayout: 'main.hbs'
+  }));
   app.set('view engine', 'hbs');
 
   // NOTE: body parser
