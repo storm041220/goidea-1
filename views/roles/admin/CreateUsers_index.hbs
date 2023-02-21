@@ -1,4 +1,4 @@
-<form id="create">
+
     <div class="container">
         <h2>Create a new User</h2>
         <hr>
@@ -13,15 +13,6 @@
         <label for="DateOfBirth"><b>Date of Birth</b></label>
         <input type="date" id="DateOfBirth" name="DateOfBirth" required>
         <div style="width:200">
-            <label for="department"><b>Department</b></label>
-            <br>
-            <select name="department" class="selectedItem" id="department" required>
-                <option value="1">IT</option>
-                <option value="2">Business</option>
-                <option value="3">Graphic Design</option>
-            </select>
-        </div>
-        <div style="width:200">
             <label for="roles"><b>Roles</b></label>
             <br>
             <select name="roles" class="selectedItem" id="roles" required>
@@ -31,13 +22,11 @@
             </select>
         </div>
         <div style="width:200">
-                <button class="createBtn" type="submit" id="register">Create</button>
-                <a class="createBtn" type="submit" href="javascript:submit()">abc</a>
+            <button class="createBtn" type="submit" id="register">Create</button>
         </div>
-        
+
         <hr>
     </div>
-</form>
 <script>
     const html = document.documentElement;
     const body = document.body;
@@ -106,13 +95,12 @@
     });
 </script>
 <script>
-    function submit() {
+    async function submit() {
         var username = document.getElementById("username").value;
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
         var confirmPassword = document.getElementById("confirmPassword").value;
         var dateofbirth = document.getElementById("DateOfBirth").value;
-        var department = document.getElementById("department").value;
         var roles = document.getElementById("roles").value;
 
         if (username == "" || email == "" || password == "" || confirmPassword == "" || dateofbirth == "") {
@@ -125,40 +113,43 @@
             password: password,
             confirmPassword: confirmPassword,
             DateOfBirth: dateofbirth,
-            department: department,
             roles: roles,
 
         };
-        fetch('/auth/api/register', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            if (data.success == true) {
-                alert("User created successfully");
-                window.location.href = "/admin/users"
+        try {
+            var response = await fetch('/auth/api/register', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+
+            });
+            var data = await response.json();
+            if (data.success) {
+                alert(data.message);
+                window.location.href = "/admin/users";
+                return;
             }
             else {
-                alert("User creation failed");
-                console.log(data);
+                alert(data.message);
+                return;
             }
-        });
+        } catch (error) {
+            alert(error);
+        }
         return false;
     }
     var form = document.getElementById("register")
     form.addEventListener("click", (e) => {
-        var username = document.getElementById("name");
+        alert("registered");
+        var username = document.getElementById("username");
         var email = document.getElementById("email");
         var password = document.getElementById("password");
         var confirmPassword = document.getElementById("confirmPassword");
         var dateofbirth = document.getElementById("DateOfBirth");
-        var department = document.getElementById("department");
         var roles = document.getElementById("roles");
-        var fields = [username, email, password, dateofbirth, department, roles]
+        var fields = [username, email, password, dateofbirth, roles]
         var validity = true;
 
         for (var e of fields) {
@@ -167,6 +158,7 @@
                 e.reportValidity();
             }
         }
+        console.log(validity);
         if (validity == true) {
             submit();
         }
